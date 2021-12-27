@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:green_notes/pages/files/file.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'pages/home/bloc/home_bloc.dart';
+import 'pages/home/bloc/home_event.dart';
+import 'pages/home/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +28,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const FileView(),
+      home: MultiBlocProvider(providers: [
+        BlocProvider(create: (context) => HomeBloc()..add(NoteRequest()))
+      ], child: HomeView()),
     );
   }
 }

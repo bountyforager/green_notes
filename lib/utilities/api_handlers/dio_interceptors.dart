@@ -15,7 +15,7 @@ class DioInterceptors implements Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print(response.data.toString());
+    // print(response.data.toString());
     handler.next(response);
   }
 }
